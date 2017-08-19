@@ -1,0 +1,16 @@
+POST
+https://fcm.googleapis.com/fcm/send
+
+headers:
+    Authorization: key=AAAA9mPled0:APA91bHjrLdxVGZMQe_HSzaBGQYF0OfC4W0QbaEJNJ6BEWN9FhHvZxVrcgFAUpmHklSkoN2zOxSXKwSCs2toK2thhUmN0wVNPO1qYQJSG-t4dPnCeDaBPBkODMS52cA4ny0k0W1ZXmtZ 
+    Content-Type: application/json
+    
+data:{
+        "notification" : { 
+            "title" : "firebase workshop",
+            "body" : "sdsadsad",
+            "icon" : "asdsad",
+            "click_action" : "http://playground-gjerobs.c9users.io:8080/"
+        },
+        "to" : ""
+    }   

@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Firebase Codelab</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+        <link rel="stylesheet" href="static/index.css">
+    </head>
+
+    <body class="chat">
+        <header class="app-header">
+            <div class="logo">
+                <img src="static/images/firebase.png" alt="Firebase Logo">
+            </div>
+
+            <button class="notification-btn enabled"></button>
+            <button class="logout-btn"></button>
+        </header>
+
+        <p class="alert">
+            Your email address is not yet verified.
+            <a href="#" class="resend-link">Resend Email</a>
+        </p>
+
+        <section>
+            <ul class="messages"></ul>
+            <form action="#" method="post" class="chat-form">
+                <img src="https://randomuser.me/api/portraits/men/79.jpg" alt="Current User">
+                <input type="text" name="message" placeholder="Send a message" autofocus class="input-message">
+                <button class="image-btn" type="button">
+                    <input class="file-input" type="file" name="image" accept="image/*">
+                </button>
+                <button class="send-btn"></button>
+                <p class="error"></p>
+            </form>
+        </section>
+        
+        <script type="text/javascript" src="static/jquery.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+        <script>
+        //Open console 
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyAJEoybCdfJoYHeNtce8SQQtkMO2tRsZcU",
+            authDomain: "gdgfirebase-59148.firebaseapp.com",
+            databaseURL: "https://gdgfirebase-59148.firebaseio.com",
+            projectId: "gdgfirebase-59148",
+            storageBucket: "gdgfirebase-59148.appspot.com",
+            messagingSenderId: "1058237938141"
+          };
+          firebase.initializeApp(config);
+        </script>
+        <script type="text/javascript" src="static/index.js"></script>
+    </body>
+</html>
