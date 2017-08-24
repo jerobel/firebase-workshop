@@ -1,6 +1,24 @@
 var database = firebase.database();
 var currentUser = null;
 
+// =================================================
+// Check if user is login
+//=================================================
+    firebase.auth().onAuthStateChanged(function(user){
+       if (!user) {
+           window.location = '/login.html';
+       } else {
+           //Execute code if the user if login
+           $('form img').attr('src', user.photoURL);
+           currentUser = user;
+       }
+    });
+    
+    //=================================================
+// LOGOUT
+//=================================================
+    
+
 //set global
 var messageRef = database.ref('messages');
 
@@ -23,10 +41,10 @@ $('.send-btn').on('click', function(e){
     
 });
 
-//if delete use child remove
+
 messageRef.on('child_added', function(snapshot){
-    //append the message from firebase databse. 
     
+    //append the message from firebase databse. 
     var data = snapshot.val();
     var container = $('.messages');
     var isSelf = (data.user.uid == currentUser.uid) ? 'self' : '';
@@ -45,7 +63,7 @@ messageRef.on('child_added', function(snapshot){
          content +
         '</li>';
     
-    container.append(template);
+    container.prepend(template);
 });
 
 //Upload script to firebase storage
@@ -79,30 +97,9 @@ $('.file-input').on('change', function(e){
 });
 
 
-
-
-// =============================================================================================
-
-//Check if user is login
-//if not redirect to login page
-firebase.auth().onAuthStateChanged(function(user){
-   
-   if(!user){
-       window.location = '/login.html';
-   } else {
-       //Execute code if the user if login
-       $('form img').attr('src', user.photoURL);
-       currentUser = user;
-      console.log("Hello winload location at index.js line 9");
-   }
-})
-
-//== TODO logout the button function
 $('.logout-btn').on('click', function(e){
     firebase.auth().signOut();
-})
-
-
+});
 
 //===== CLOUD MESSING ========by Arnelle Balane============
 

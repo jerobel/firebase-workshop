@@ -12,5 +12,5 @@ data:{
             "icon" : "asdsad",
             "click_action" : "http://playground-gjerobs.c9users.io:8080/"
         },
-        "to" : ""
+        "to" : "key token generated under console log"
     }   
