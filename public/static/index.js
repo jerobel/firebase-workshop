@@ -4,19 +4,17 @@ var currentUser = null;
 // =================================================
 // Check if user is login
 //=================================================
+
     firebase.auth().onAuthStateChanged(function(user){
        if (!user) {
            window.location = '/login.html';
        } else {
+           
            //Execute code if the user if login
            $('form img').attr('src', user.photoURL);
            currentUser = user;
        }
     });
-    
-    //=================================================
-// LOGOUT
-//=================================================
     
 
 //set global
@@ -44,12 +42,14 @@ $('.send-btn').on('click', function(e){
 
 messageRef.on('child_added', function(snapshot){
     
-    //append the message from firebase databse. 
+    /*
+     @ append the message from firebase database.
+     */
     var data = snapshot.val();
     var container = $('.messages');
     var isSelf = (data.user.uid == currentUser.uid) ? 'self' : '';
     
-    //this code access the file upload function below==============================================================
+    // this code access the file upload function below==============================================================
     var content = (data.messageBody) ? '<p>' + data.messageBody + '</p>' : '<img src="' + data.messageImage + '" />';
     //==============================================================================================================
     
@@ -66,7 +66,11 @@ messageRef.on('child_added', function(snapshot){
     container.prepend(template);
 });
 
-//Upload script to firebase storage
+
+/*
+ @ Upload function to firebase storage
+ */
+
 $('.file-input').on('change', function(e){
     var file = e.target.files[0];
     var storage = firebase.storage();
@@ -97,11 +101,19 @@ $('.file-input').on('change', function(e){
 });
 
 
+ /* 
+  @ logout function
+ */  
+
 $('.logout-btn').on('click', function(e){
     firebase.auth().signOut();
 });
 
-//===== CLOUD MESSING ========by Arnelle Balane============
+
+/*
+ @ Cloud messaging function todo
+ */
+
 
 var messaging = firebase.messaging();
 
